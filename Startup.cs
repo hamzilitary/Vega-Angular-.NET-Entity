@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using vega.Persistence;
+using VEGA1.Persistence;
 using AutoMapper;
   
-namespace vega
+namespace VEGA1
 {
     public class Startup
     {

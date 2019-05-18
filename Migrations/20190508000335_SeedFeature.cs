@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace vega.Migrations
+namespace VEGA1.Migrations
 {
     public partial class SeedFeature : Migration
     {

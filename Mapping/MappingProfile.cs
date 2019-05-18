@@ -1,8 +1,8 @@
 using AutoMapper;
-using vega.Controllers.Resources;
-using vega.Models;
+using VEGA1.Controllers.Resources;
+using VEGA1.Models;
 
-namespace vega.Mapping
+namespace VEGA1.Mapping
 {
     public class MappingProfile : Profile
     {

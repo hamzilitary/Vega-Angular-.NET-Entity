@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using vega.Controllers.Resources;
-using vega.Models;
-using vega.Persistence;
+using VEGA1.Controllers.Resources;
+using VEGA1.Models;
+using VEGA1.Persistence;
 
-namespace vega.Controllers
+namespace VEGA1.Controllers
 {
   public class FeaturesController : Controller
   {

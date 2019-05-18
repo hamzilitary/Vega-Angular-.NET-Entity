@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace vega.Migrations
+namespace VEGA1.Migrations
 {
     public partial class AddFeature : Migration
     {

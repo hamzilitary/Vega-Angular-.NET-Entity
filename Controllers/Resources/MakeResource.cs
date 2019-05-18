@@ -4,10 +4,10 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
-using vega.Controllers.Resources;
+using VEGA1.Controllers.Resources;
 
 
-namespace vega.Controllers.Resources
+namespace VEGA1.Controllers.Resources
 {
     public class MakeResource
     {

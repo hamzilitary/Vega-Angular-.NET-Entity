@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace vega.Models
+namespace VEGA1.Models
 
 {
     [Table("Models")]

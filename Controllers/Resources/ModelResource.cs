@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 
 
-namespace vega.Controllers.Resources
+namespace VEGA1.Controllers.Resources
 {
     public class ModelResource
     {
