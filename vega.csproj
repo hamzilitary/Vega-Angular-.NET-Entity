@@ -18,7 +18,7 @@
       <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.2.4" />
   </ItemGroup>
     <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="AutoMapper" Version="6.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Metadata;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VEGA1.Migrations
@@ -14,12 +15,12 @@ namespace VEGA1.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ModelId = table.Column<int>(nullable: false),
-                    IsRegistered = table.Column<bool>(nullable: false),
-                    ContactName = table.Column<string>(maxLength: 255, nullable: false),
                     ContactEmail = table.Column<string>(maxLength: 255, nullable: true),
+                    ContactName = table.Column<string>(maxLength: 255, nullable: false),
                     ContactPhone = table.Column<string>(maxLength: 255, nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false)
+                    IsRegistered = table.Column<bool>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    ModelId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,14 +58,14 @@ namespace VEGA1.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_VehicleFeatures_FeatureId",
-                table: "VehicleFeatures",
-                column: "FeatureId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Vehicles_ModelId",
                 table: "Vehicles",
                 column: "ModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VehicleFeatures_FeatureId",
+                table: "VehicleFeatures",
+                column: "FeatureId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
