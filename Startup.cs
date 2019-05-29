@@ -33,6 +33,7 @@ namespace VEGA1
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

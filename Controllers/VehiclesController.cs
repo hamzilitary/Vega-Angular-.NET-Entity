@@ -12,12 +12,13 @@ namespace VEGA1.Controllers {
     [Route ("/api/vehicles")]
     public class VehiclesController : Controller {
         private readonly IMapper mapper;
-        private readonly VegaDbContext context;
         private readonly IVehicleRepository repository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public VehiclesController (IMapper mapper, VegaDbContext context, IVehicleRepository repository) {
+        public VehiclesController (IMapper mapper, IVehicleRepository repository, IUnitOfWork unitOfWork) 
+        {
             this.repository = repository;
-            this.context = context;
+            this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
 
@@ -29,8 +30,8 @@ namespace VEGA1.Controllers {
             var vehicle = mapper.Map<SaveVehicleResource, Vehicle> (vehicleResource);
             vehicle.LastUpdate = DateTime.Now;
 
-            context.Vehicles.Add (vehicle);
-            await context.SaveChangesAsync ();
+            repository.Add(vehicle);
+            await unitOfWork.CompleteAsync();
 
             vehicle = await repository.GetVehicle(vehicle.Id);
 
@@ -52,7 +53,9 @@ namespace VEGA1.Controllers {
             mapper.Map<SaveVehicleResource, Vehicle> (vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
-            await context.SaveChangesAsync ();
+            await unitOfWork.CompleteAsync();
+
+            vehicle = await repository.GetVehicle(vehicle.Id);
 
             var result = mapper.Map<Vehicle, VehicleResource> (vehicle);
 
@@ -61,13 +64,13 @@ namespace VEGA1.Controllers {
 
         [HttpDelete ("{id}")]
         public async Task<IActionResult> DeleteVehicle (int id) {
-            var vehicle = await context.Vehicles.FindAsync (id);
+            var vehicle = await repository.GetVehicle(id, includeRelated: false);
 
             if (vehicle == null)
                 return NotFound ();
 
-            context.Remove (vehicle);
-            await context.SaveChangesAsync ();
+            repository.Remove(vehicle);
+            await unitOfWork.CompleteAsync();
 
             return Ok (id);
         }

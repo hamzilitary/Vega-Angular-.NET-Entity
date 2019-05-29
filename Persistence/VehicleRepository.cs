@@ -1,18 +1,38 @@
 using VEGA1.Models;
+using Microsoft.EntityFrameworkCore;
+using VEGA1.Persistence;
+using System.Threading.Tasks;
 
-namespace VEGA1.Persistence
-{
-    public class VehicleRepository
+
+
+namespace VEGA1.Persistence {
+    public class VehicleRepository : IVehicleRepository
     {
-        public Vehicle GetVehicle(int id)
-        {
-            var vehicle = await context.Vehicles
-            .Include(v => v.Features)
-            .ThenInclude(vf => vf.Feature)
-            .Include(v => v.Model)
-            .ThenInclude(m => m.Make)
-            .SingleOrDefaultAsync(v => v.Id == id);
+        private readonly VegaDbContext context;
+        public VehicleRepository (VegaDbContext context) {
+            this.context = context;
 
+        }
+        public async Task<Vehicle> GetVehicle (int id, bool includeRelated = true) 
+        {
+            if (!includeRelated)
+          return await context.Vehicles.FindAsync(id);
+
+        return await context.Vehicles
+          .Include(v => v.Features)
+            .ThenInclude(vf => vf.Feature)
+          .Include(v => v.Model)
+            .ThenInclude(m => m.Make)
+          .SingleOrDefaultAsync(v => v.Id == id);
+
+        }
+         public void Add(Vehicle vehicle) 
+        {
+            context.Vehicles.Add(vehicle);
+        }
+        public void Remove(Vehicle vehicle)
+        {
+            context.Remove(vehicle);
         }
     }
 }
