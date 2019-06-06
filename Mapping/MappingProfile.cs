@@ -4,7 +4,7 @@ using System.Security;
 using System.Runtime.InteropServices.ComTypes;
 using AutoMapper;
 using VEGA1.Controllers.Resources;
-using VEGA1.Models;
+using VEGA1.Core.Models;
 using System.Collections.Generic;
 using System.Linq;
 

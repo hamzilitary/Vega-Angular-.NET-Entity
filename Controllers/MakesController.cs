@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using VEGA1.Models;
+using VEGA1.Core.Models;
 using VEGA1.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -17,7 +17,6 @@ namespace VEGA1.Controllers
         {
             this.mapper = mapper;
             this.context = context;
-
         }
         [HttpGet("/api/makes")]
         public async Task<IEnumerable<MakeResource>> GetMakes()

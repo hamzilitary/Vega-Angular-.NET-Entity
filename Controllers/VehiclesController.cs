@@ -5,8 +5,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VEGA1.Controllers.Resources;
-using VEGA1.Models;
-using VEGA1.Persistence;
+using VEGA1.Core.Models;
+using VEGA1.Core;
 
 namespace VEGA1.Controllers {
     [Route ("/api/vehicles")]
@@ -86,6 +86,5 @@ namespace VEGA1.Controllers {
 
             return Ok (vehicleResource);
         }
-
     }
 }

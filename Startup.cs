@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using VEGA1.Persistence;
 using AutoMapper;
+using VEGA1.Core;
   
 namespace VEGA1
 {

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace VEGA1
+namespace VEGA1.Core.Models
 {
   public class Feature
     {
