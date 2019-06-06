@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using vega.Controllers.Resources;
-using vega.Models;
-using vega.Persistence;
+using VEGA1.Controllers.Resources;
+using VEGA1.Core.Models;
+using VEGA1.Persistence;
 
-namespace vega.Controllers
+namespace VEGA1.Controllers
 {
   public class FeaturesController : Controller
   {
@@ -20,11 +20,11 @@ namespace vega.Controllers
     }
 
     [HttpGet("/api/features")]
-    public async Task<IEnumerable<FeatureResource>> GetFeatures()
+    public async Task<IEnumerable<KeyValuePairResource>> GetFeatures()
     {
       var features = await context.Features.ToListAsync();
       
-      return mapper.Map<List<Feature>, List<FeatureResource>>(features); 
+      return mapper.Map<List<Feature>, List<KeyValuePairResource>>(features); 
     }
   }
 }

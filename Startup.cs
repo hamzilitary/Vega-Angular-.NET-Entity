@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using vega.Persistence;
+using VEGA1.Persistence;
 using AutoMapper;
+using VEGA1.Core;
   
-namespace vega
+namespace VEGA1
 {
     public class Startup
     {
@@ -32,6 +33,8 @@ namespace vega
             services.AddAutoMapper();
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
