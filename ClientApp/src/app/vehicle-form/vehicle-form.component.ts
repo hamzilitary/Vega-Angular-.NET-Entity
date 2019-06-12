@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { from } from 'rxjs';
+import { ToastyService } from 'ng2-Toasty';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class VehicleFormComponent implements OnInit {
   
 
   constructor(
-    private vehicleService: VehicleService) { 
+    private vehicleService: VehicleService,
+    private toastyService: ToastyService) { 
     
   }
 
@@ -47,7 +49,15 @@ export class VehicleFormComponent implements OnInit {
 
   }
   submit(){
-    this.vehicleService.create(this.vehicle).subscribe(x => console.log(x));
+    this.vehicleService.create(this.vehicle).subscribe(x => console.log(x), err => {
+      this.toastyService.error({
+        title: 'Error',
+        msg: 'An Unexpected Error Happened.',
+        theme: 'bootstrap',
+        showClose: true,
+        timeout: 5000
+      });
+    });
   }
 }
 //private makeService: MakeService
