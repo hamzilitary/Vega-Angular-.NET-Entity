@@ -1,7 +1,8 @@
+import { AppErrorHandler } from './app.error-handler';
 
 import { VehicleService } from './services/vehicle.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule} from '@angular/core';
+import { NgModule, ErrorHandler} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -38,6 +39,7 @@ import { ToastyModule} from 'ng2-Toasty';
     ])
   ],
   providers: [
+    {provide: ErrorHandler, useClass: AppErrorHandler},
     VehicleService
     
     
