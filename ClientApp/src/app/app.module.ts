@@ -1,5 +1,5 @@
 import { AppErrorHandler } from './app.error-handler';
-
+import { routing } from './app.routing';
 import { VehicleService } from './services/vehicle.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler} from '@angular/core';
@@ -30,13 +30,9 @@ import { ToastyModule} from 'ng2-Toasty';
     HttpClientModule,
     HttpModule,
     FormsModule,
+    routing,
     ToastyModule.forRoot(),
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'vehicles-new', component: VehicleFormComponent},
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+   
   ],
   providers: [
     {provide: ErrorHandler, useClass: AppErrorHandler},
@@ -44,6 +40,7 @@ import { ToastyModule} from 'ng2-Toasty';
     
     
   ],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
   
 })
