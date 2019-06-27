@@ -6,11 +6,13 @@ import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import { SaveVehicle } from '../models/vehicle';
+import { pipe } from '@angular/core/src/render3/pipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleService {
+  private readonly vehiclesEndpoint = '/api/vehicles';
 
   constructor(private http: Http) { }
     getMakes() {
@@ -35,6 +37,22 @@ export class VehicleService {
   // }
   getVehicle(id) {
     return this.http.get('/api/vehicles/' + id).pipe<any>(map((res: { json: () => void; }) => res.json()));
+  }
+
+  getVehicles(filter) {
+    return this.http.get(this.vehiclesEndpoint + '?' + this.toQueryString(filter))
+      .pipe<any>(map(res => res.json()));
+  }
+
+  toQueryString(obj) {
+    var parts = [];
+    for (var property in obj) {
+      var value = obj[property];
+      if (value != null && value != undefined) 
+        parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
+    }
+
+    return parts.join('&');
   }
 
   delete(id) {

@@ -14,6 +14,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { ToastyModule} from 'ng2-Toasty';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ToastyModule} from 'ng2-Toasty';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    VehicleListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
