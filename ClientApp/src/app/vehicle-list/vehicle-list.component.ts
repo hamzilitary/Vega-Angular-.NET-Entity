@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './vehicle-list.component.html'
 })
 export class VehicleListComponent implements OnInit {
-  private readonly PAGE_SIZE = 3; 
+  private readonly PAGE_SIZE = 10; 
 
   queryResult: any = {};
   makes: KeyValuePair[];
@@ -15,9 +15,9 @@ export class VehicleListComponent implements OnInit {
   };
   columns = [
     { title: 'Id' },
-    { title: 'Contact Name', key: 'contactName', isSortable: true },
     { title: 'Make', key: 'make', isSortable: true },
     { title: 'Model', key: 'model', isSortable: true },
+    { title: 'Contact Name', key: 'contactName', isSortable: true },
     { }
   ];
 
