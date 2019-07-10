@@ -1,3 +1,4 @@
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -25,6 +26,10 @@ const appRoutes: Routes = [
     {
       path: 'vehicles/:id',
       component: VehicleFormComponent
+    },
+    {
+      path: 'vehicles',
+      component: VehicleListComponent
     },
     {
       path: 'home',
