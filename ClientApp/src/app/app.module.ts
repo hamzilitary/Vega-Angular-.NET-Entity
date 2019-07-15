@@ -16,6 +16,7 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { ToastyModule} from 'ng2-Toasty';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { PaginationComponent } from './shared/pagination.component';
+import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PaginationComponent } from './shared/pagination.component';
     FetchDataComponent,
     VehicleFormComponent,
     PaginationComponent,
-    VehicleListComponent
+    VehicleListComponent,
+    ViewVehicleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

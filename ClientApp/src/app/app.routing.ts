@@ -1,3 +1,4 @@
+import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -5,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
 // RouterModule.forRoot([
 //     { path: '', redirectTo: 'home', pathMatch: 'full' },
 //     { path: 'vehicles/new', component: VehicleFormComponent },
@@ -24,8 +26,12 @@ const appRoutes: Routes = [
       component: VehicleFormComponent
     },
     {
-      path: 'vehicles/:id',
+      path: 'vehicles/edit/:id',
       component: VehicleFormComponent
+    },
+    {
+      path: 'vehicles/:id',
+      component: ViewVehicleComponent
     },
     {
       path: 'vehicles',
