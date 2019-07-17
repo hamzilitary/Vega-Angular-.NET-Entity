@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  templateUrl: 'view-vehicle.html'
+  templateUrl: 'view-vehicle.component.html'
 })
 export class ViewVehicleComponent implements OnInit {
   vehicle: any;
@@ -27,7 +27,7 @@ export class ViewVehicleComponent implements OnInit {
 
   ngOnInit() { 
     this.vehicleService.getVehicle(this.vehicleId)
-      .subscribe(
+      .subscribe(]
         v => this.vehicle = v,
         err => {
           if (err.status == 404) {
