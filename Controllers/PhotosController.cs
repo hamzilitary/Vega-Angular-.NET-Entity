@@ -9,20 +9,23 @@ using Microsoft.AspNetCore.Mvc;
 using VEGA1.Controllers.Resources;
 using VEGA1.Core;
 using VEGA1.Core.Models;
+using Microsoft.Extensions.Options;
 
 namespace VEGA1.Controllers {
     [Route ("/api/vehicles/{vehicleId}/photos")]
     public class PhotosController : Controller {
-        private readonly int MAX_BYTES = 1 * 1024 * 1024;
-        private readonly string[] ACCEPTED_FILE_TYPES = new[] {".jgp", ".jpeg", ".png" };
+        //private readonly int MAX_BYTES = 1 * 1024 * 1024;
+        //private readonly string[] ACCEPTED_FILE_TYPES = new[] {".jgp", ".jpeg", ".png" };
         private readonly IVehicleRepository repository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IHostingEnvironment host;
+        private readonly PhotoSettings photoSettings;
 
         
-        public PhotosController (IHostingEnvironment host, IVehicleRepository repository, IUnitOfWork unitOfWork, IMapper mapper) 
+        public PhotosController (IHostingEnvironment host, IVehicleRepository repository, IUnitOfWork unitOfWork, IMapper mapper, IOptionsSnapshot<PhotoSettings> options) 
         {
+            this.photoSettings = options.Value;
             this.mapper = mapper;
             this.unitOfWork = unitOfWork;
             this.repository = repository;
@@ -43,10 +46,11 @@ namespace VEGA1.Controllers {
             {
                 return BadRequest("Emplty File");
             }
-            if(!ACCEPTED_FILE_TYPES.Any(s => s == Path.GetExtension(file.FileName))){
+            if(!photoSettings.IsSupported(file.FileName))
+            {
                 return BadRequest("Invalid File Type");
             }
-            if(file.Length > MAX_BYTES) return BadRequest("Maximum File Size Exceeded"); 
+            if(file.Length > photoSettings.MaxBytes) return BadRequest("Maximum File Size Exceeded"); 
              var uploadsFolderPath = Path.Combine (host.WebRootPath, "uploads");
             if (!Directory.Exists (uploadsFolderPath)) {
                 Directory.CreateDirectory (uploadsFolderPath);
