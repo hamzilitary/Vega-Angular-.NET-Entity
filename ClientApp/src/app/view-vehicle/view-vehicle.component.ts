@@ -50,8 +50,8 @@ export class ViewVehicleComponent implements OnInit {
     }
   }
   uploadPhoto(){
+    console.log("uploadPhoto called")
     var nativeElement: HTMLInputElement = this.fileInput.nativeElement;
     this.photoService.upload(this.vehicleId, nativeElement.files[0]).subscribe(x => console.log(x));
-
   }
 }
