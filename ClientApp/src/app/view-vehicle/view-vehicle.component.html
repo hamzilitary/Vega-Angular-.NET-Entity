@@ -15,7 +15,7 @@
       <ul>
         <li>Make: {{ vehicle.make.name }}</li>
         <li>Model: {{ vehicle.model.name }}</li>
-        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}
+        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}</li>
       </ul>
       <h2>Features</h2>
       <ul>
@@ -37,6 +37,7 @@
     <!-- Photos tab -->
     <div role="tabpanel" class="tab-pane" id="photos">
       <h2>Photos</h2>
+      <input type="file" change="uploadPhoto()" #fileInput>
     </div>
   </div>
 </div>
