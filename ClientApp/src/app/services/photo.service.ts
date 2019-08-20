@@ -20,4 +20,9 @@ export class PhotoService {
         return this.http.post('/api/vehicles/' + vehicleId + '/photos', formData).pipe<any>(map((res: { json: () => void; }) => res.json()));
     }
 
+    getPhotos(vehicleId){
+        return this.http.get(`api/vehicles/${vehicleId}/photos`).pipe<any>(map((res: { json: () => void; }) => res.json()));
+
+    }
+
 }
