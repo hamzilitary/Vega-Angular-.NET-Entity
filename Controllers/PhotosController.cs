@@ -38,14 +38,14 @@ namespace VEGA1.Controllers {
         [HttpGet]
         public async Task<IEnumerable<PhotoResource>> GetPhotos (int vehicleId)
         {
-            var photos = await photoRepository.GetPhotos (vehicleId);
+            var photos = await photoRepository.GetPhotos(vehicleId);
             return mapper.Map<IEnumerable<Photo>, IEnumerable<PhotoResource>> (photos);
 
         }
 
         [HttpPost]
-        public async Task<IActionResult> Upload (int vehicleId, IFormFile file) {
-            var vehicle = await repository.GetVehicle (vehicleId, includeRelated : false);
+        public async Task<IActionResult> Upload(int vehicleId, IFormFile file) {
+            var vehicle = await repository.GetVehicle(vehicleId, includeRelated : false);
             if (vehicle == null) {
                 return NotFound ();
             }
@@ -59,16 +59,22 @@ namespace VEGA1.Controllers {
                 return BadRequest ("Invalid File Type");
             }
             if (file.Length > photoSettings.MaxBytes) return BadRequest ("Maximum File Size Exceeded");
-            var uploadsFolderPath = Path.Combine (host.WebRootPath, "uploads");
-            if (!Directory.Exists (uploadsFolderPath)) {
-                Directory.CreateDirectory (uploadsFolderPath);
+           
+
+            var uploadsFolderPath = Path.Combine(host.WebRootPath, "uploads");
+            if (!Directory.Exists(uploadsFolderPath)) {
+                Directory.CreateDirectory(uploadsFolderPath);
             }
-            var fileName = Guid.NewGuid ().ToString () + Path.GetExtension (file.FileName);
-            var filePath = Path.Combine (uploadsFolderPath, fileName);
+           
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension (file.FileName);
+            var filePath = Path.Combine(uploadsFolderPath, fileName);
 
             using (var stream = new FileStream (filePath, FileMode.Create)) {
                 await file.CopyToAsync (stream);
             }
+
+
+           
 
             var photo = new Photo { FileName = fileName };
             vehicle.Photos.Add (photo);

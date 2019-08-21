@@ -1,3 +1,4 @@
+import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { AppErrorHandler } from './app.error-handler';
 import { routing } from './app.routing';
 import { VehicleService } from './services/vehicle.service';
@@ -6,7 +7,7 @@ import { NgModule, ErrorHandler} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BrowserXhr } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -43,8 +44,10 @@ import { PhotoService } from './services/photo.service';
   ],
   providers: [
     {provide: ErrorHandler, useClass: AppErrorHandler},
+    {provide: BrowserXhr, useClass: BrowserXhrWithProgress},
     VehicleService, 
-    PhotoService
+    PhotoService,
+    ProgressService
     
     
   ],
