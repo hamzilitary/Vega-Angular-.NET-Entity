@@ -63,7 +63,8 @@ export class ViewVehicleComponent implements OnInit {
     console.log("uploadPhoto called")
     var nativeElement: HTMLInputElement = this.fileInput.nativeElement;
 
-    this.progressServicie.uploadProgress.subscribe(progress => {
+    this.progressServicie.startTracking()
+    .subscribe(progress => {
       console.log(progress);
       this.zone.run(() => {
         this.progress = progress;
