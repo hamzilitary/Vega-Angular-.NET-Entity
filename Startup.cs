@@ -11,6 +11,7 @@ using VEGA1.Persistence;
 using AutoMapper;
 using VEGA1.Core;
 using VEGA1.Core.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
   
 namespace VEGA1
 {
@@ -38,6 +39,16 @@ namespace VEGA1
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPhotoRepository, PhotoRepository>();
+            services.AddAuthentication(options =>
+            {   
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://vegahamza.auth0.com/";
+                options.Audience = "https://api.vega.com";
+            });
+    
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -66,7 +77,7 @@ namespace VEGA1
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
