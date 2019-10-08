@@ -12,8 +12,10 @@
             <li class="nav-item"><a class="nav-link" routerLink="vehicles/new">New Vehicle</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="counter">Counter</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="fetch-data">Fetch Data</a></li>
-            <li class="nav-item"><a href="https://vegahamza.auth0.com/login?client=OJ6wFvZSkUeNch6jn0KtcGasnGMBWZ71">Login</a></li>
+          
         </ul>
+        <button (click)="authService.login('/vehicles')" *ngIf="!authService.loggedIn">Login</button>
+        <button (click)="authService.logout()" *ngIf="authService.loggedIn">Log Out</button>
       </div>
     </div>
   </nav>

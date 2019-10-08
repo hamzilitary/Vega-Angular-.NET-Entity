@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { CallbackComponent } from './callback/callback.component';
 
 // RouterModule.forRoot([
 //     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -48,6 +49,10 @@ const appRoutes: Routes = [
     {
       path: 'fetch-data',
       component: FetchDataComponent
+    },
+    {
+      path: 'callback',
+      component: CallbackComponent
     }
   ];
   

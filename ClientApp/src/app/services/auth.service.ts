@@ -35,6 +35,8 @@ export class AuthService {
   private userProfileSubject$ = new BehaviorSubject<any>(null);
   userProfile$ = this.userProfileSubject$.asObservable();
   // Create a local property for login status
+  
+  
   loggedIn: boolean = null;
 
   constructor(private router: Router) { }
@@ -76,7 +78,7 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
       client.loginWithRedirect({
-        redirect_uri: `${window.location.origin}/callback`,
+        redirect_uri: `${window.location.origin}/vehicles`,
         appState: { target: redirectPath }
       });
     });
@@ -114,7 +116,7 @@ export class AuthService {
       // Call method to log out
       client.logout({
         client_id: "OJ6wFvZSkUeNch6jn0KtcGasnGMBWZ71",
-        returnTo: `${window.location.origin}`
+        returnTo: `${window.location.origin}/vehicles`
       });
     });
   }
