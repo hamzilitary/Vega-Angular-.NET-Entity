@@ -19,7 +19,8 @@ import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { PaginationComponent } from './shared/pagination.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 import { PhotoService } from './services/photo.service';
-
+import { CallbackComponent } from './callback/callback.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PhotoService } from './services/photo.service';
     VehicleFormComponent,
     PaginationComponent,
     VehicleListComponent,
-    ViewVehicleComponent
+    ViewVehicleComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,7 +49,8 @@ import { PhotoService } from './services/photo.service';
     {provide: BrowserXhr, useClass: BrowserXhrWithProgress},
     VehicleService, 
     PhotoService,
-    ProgressService
+    ProgressService,
+    AuthService
     
     
   ],

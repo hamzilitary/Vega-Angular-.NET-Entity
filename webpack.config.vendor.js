@@ -26,6 +26,8 @@ module.exports = (env) => {
                 '@angular/platform-server',
                 'angular2-universal',
                 'angular2-universal-polyfills',
+                '@auth0/auth0-spa-js',
+                'angular2-jwt',
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
                 'es6-shim',

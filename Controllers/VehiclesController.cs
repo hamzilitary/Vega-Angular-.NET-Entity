@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using VEGA1.Controllers.Resources;
 using VEGA1.Core.Models;
 using VEGA1.Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace VEGA1.Controllers {
     [Route ("/api/vehicles")]
@@ -23,6 +24,7 @@ namespace VEGA1.Controllers {
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateVehicle ([FromBody] SaveVehicleResource vehicleResource) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -41,6 +43,7 @@ namespace VEGA1.Controllers {
         }
 
         [HttpPut ("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateVehicle (int id, [FromBody] SaveVehicleResource vehicleResource) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -63,6 +66,7 @@ namespace VEGA1.Controllers {
         }
 
         [HttpDelete ("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteVehicle (int id) {
             var vehicle = await repository.GetVehicle(id, includeRelated: false);
 
